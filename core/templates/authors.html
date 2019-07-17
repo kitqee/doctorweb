@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load staticfiles %}
+
+{% block content %}
+
+  {% if object_list %}
+
+    <div class="row">
+      {% for author in object_list %}
+        <div class="col-md-4 col-sm-12">
+          <div class="card mb-2">
+            <img src="{% static 'img/author.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <a href="{% url 'author_detail' pk=author.pk %}"><h5 class="card-title">{{ author.full_name }}</h5></a>
+              <p class="card-text">{{ author.about|truncatechars:150 }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+  {% else %}
+    There are not authors
+  {% endif %}
+
+{% endblock %}

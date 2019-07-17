@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load staticfiles %}
+
+{% block content %}
+
+  {% if object_list %}
+
+    <h2 class="mb-2">Shelves</h2>
+
+    <div class="mb-2">You can change the order of books on the shelf</div>
+
+    <div class="row">
+      {% for shelf in object_list %}
+        <div class="col-md-4 col-sm-12">
+          <div class="card mb-2">
+            <div class="card-header">
+              <strong>{{ shelf.name }}</strong>
+            </div>
+            <ul class="list-group list-group-flush shelf">
+              {% for item in shelf.books.all %}
+                <li class="list-group-item" data-shelf="{{ shelf.pk }}"
+                    data-book="{{ item.book.pk }}">{{ item.book.title }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+  {% else %}
+    You have no shelves
+  {% endif %}
+
+{% endblock %}
