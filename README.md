@@ -8,7 +8,7 @@
 
 3) Create postgresql db
 
-4) Create .env file in csmoney directory from template .env.template and add your local configuration to it.
+4) Create .env file in doctorweb directory from template .env.template and add your local configuration to it.
 
 5) python manage.py migrate
 
